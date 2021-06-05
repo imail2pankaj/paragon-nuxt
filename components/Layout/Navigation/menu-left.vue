@@ -5,17 +5,17 @@
       <div class="dropdown-menu">
         <ul>
           <li v-for="(item, key) in categories" v-bind:key="key">
-            <a :href="item.link">for {{ item.brand_name }}</a>
+            <nuxt-link :to="'/p/' + item.link">for {{ item.brand_name }}</nuxt-link>
             <ul v-if="item.models">
               <li v-for="(model, modelKey) in item.models" v-bind:key="modelKey">
-                <a :href="model.link">
+                <nuxt-link :to="'/p/' + model.link">
                   <i class="fa fa-caret-right"></i> {{model.model_name}}
-                </a>
+                </nuxt-link>
                 <ul v-if="model.accesses">
                   <li v-for="(access, accessKey) in model.accesses" v-bind:key="accessKey">
-                    <a :href="access.link">
+                    <nuxt-link :to="'/p/' + access.link">
                       <i class="fa fa-caret-right"></i> {{access.a_name}}
-                    </a>
+                    </nuxt-link>
                   </li>
                 </ul>
               </li>
@@ -24,9 +24,9 @@
         </ul>
       </div>
     </li>
-    <li><a href="about-us/">About us</a></li>
-    <li><a href="faq/">FAQ</a></li>
-    <li><a href="contact-us/">Contact us</a></li>
+    <li><a href="/about-us">About us</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="/contact-us">Contact us</a></li>
   </ul>
 </template>
 <script>

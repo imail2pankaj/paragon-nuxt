@@ -1,5 +1,5 @@
 module.exports = {
-    target: 'universal',
+    target: 'server',
     head: {
         title: 'Paragon Two Wheeler Accessories',
         meta: [
@@ -52,7 +52,8 @@ module.exports = {
       proxyHeaders: false,
       headers: {
         common: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          // 'Access-Control-Allow-Origin': '*'
         },
       }
       // https: true,
@@ -61,15 +62,33 @@ module.exports = {
       axios: {
         baseURL: 'http://localhost/paragon-api/api.php',
         credentials: false,
+        proxyHeaders: false,
         headers: {
           common: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            // 'Access-Control-Allow-Origin': '*'
           },
+        }
+      }
+    },
+    auth: {
+      strategies: {
+        local: {
+          endpoints: {
+            login: { url: 'login', method: 'post', propertyName: 'data.token' },
+            user: { url: 'me', method: 'get', propertyName: 'data' },
+            logout: false
+          }
         }
       }
     },
     // plugins: ['~/plugins/repository'],
     modules: [
-      '@nuxtjs/axios'
+      '@nuxtjs/axios',
+      '@nuxtjs/auth-next',
+      '@nuxtjs/proxy'
     ],
+    proxy: { 
+      '/api.php': 'http://localhost:3000' 
+    }, 
 }

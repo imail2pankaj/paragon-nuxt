@@ -3,7 +3,7 @@
     <h4>Categories<span></span></h4>
     <ul>
       <li v-for="(item, key) in categories" v-bind:key="key">
-        <nuxt-link :to="item.slug">{{item.brand_name}}</nuxt-link>
+        <nuxt-link :to="'/' + item.slug">{{item.brand_name}}</nuxt-link>
       </li>
     </ul>
   </div>

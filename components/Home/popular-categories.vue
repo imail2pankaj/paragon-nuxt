@@ -4,7 +4,7 @@
       <div class="container">
         <div class="heading-section">
           <h2>{{category.brand_name}} <span>Accessories</span></h2>
-          <nuxt-link to="/brands/honda/" class="view-all">View All</nuxt-link>
+          <a :href="'/brands/' + category.slug" class="view-all">View All</a>
         </div>
         <div class="row">
           <ProductListItem v-for="(product, itemKey) in category.accesses" v-bind:key="itemKey" :product="product"></ProductListItem>
